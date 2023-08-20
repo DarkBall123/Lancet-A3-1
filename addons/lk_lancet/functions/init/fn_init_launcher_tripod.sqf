@@ -22,17 +22,9 @@ _launcher addEventHandler["Fired", {
 	_uav setPosASL _launchPos;
 	createVehicleCrew _uav;
 	(driver _uav) disableAI "ALL";
+
 	_gunner connectTerminalToUAV _uav;
 
-	_vehicle = vehicle _unit;
-	private _magazineCount = getNumber (configFile >> "CfgWeapons" >> currentMagazine _unit >> "count");
-    	if (_magazineCount == 0) then {
-        _vehicle animateSource ["hidelancet", 1]; // Hide the part by setting the animation source to 0 (fully hidden)
-	hint "hidden!";
-    } else {
-       // _vehicle animateSource ["hidelancet", 0]; // Show the part by setting the animation source to 1 (fully shown)
-	//hint "shown!";
-    };
 	_dir = _unit weaponDirection (currentWeapon _unit);
 	_dir_degrees = (_dir select 0) atan2 (_dir select 1);
 	_vertical_angle = (atan ((vectorDir _unit)#2)) max 0;
@@ -47,7 +39,7 @@ _launcher addEventHandler["Fired", {
 	_uav setVelocity [
 		(sin _dir * _speed), 
 		(cos _dir * _speed), 
-		(25 + _vertical_angle)
+		(50 + _vertical_angle)
 	];
 	_uav setDamage 0;
 
