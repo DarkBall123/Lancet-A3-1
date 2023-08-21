@@ -1183,6 +1183,10 @@ class CfgFunctions
 			class setangleofattack
 			{
 			};
+			class handleLancetConnect
+			{
+				postInit = 1;
+			};
 		};
 	};
 };
